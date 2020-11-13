@@ -5,7 +5,7 @@ This is a site with some basic generic features to minimize the amount of time i
 
 ## Setup
 ```
-npm install             # To get things goind (download all neccessary packages)
+npm install             # To get things going (download all neccessary packages)
 ```
 ## Avaliable npm scripts
 
