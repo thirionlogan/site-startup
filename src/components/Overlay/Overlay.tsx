@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline, makeStyles } from '@material-ui/core';
 import PrimarySearchAppBar from '../PrimarySearchAppBar';
 import TemporaryDrawer from '../TemporaryDrawer';
 import ItemList from '../Items/ItemList';
@@ -10,6 +10,13 @@ import FeedbackList from '../Feedback/FeedbackList';
 import FeatureFlags from '../FeatureFlags/FeatureFlags';
 import Metrics from '../Metrics/Metrics';
 import Home from '../Home/Home';
+
+const useStyles = makeStyles({
+  pageContainer: {
+    width: '100%',
+    height: '100%',
+  },
+});
 
 export default function Overlay() {
   const startingState: {
@@ -22,6 +29,7 @@ export default function Overlay() {
     isDarkMode: true,
   };
   const [state, setState] = React.useState(startingState);
+  const classes = useStyles();
 
   const toggleDrawer = (open: boolean) => (
     event: React.KeyboardEvent | React.MouseEvent
@@ -69,23 +77,25 @@ export default function Overlay() {
           isModalOpen={state.isModalOpen}
           toggleModal={toggleModal}
         />
-        <Router>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/Items">
-            <ItemList />
-          </Route>
-          <Route exact path="/Feedback">
-            <FeedbackList />
-          </Route>
-          <Route exact path="/Metrics">
-            <Metrics />
-          </Route>
-          <Route exact path="/FeatureFlags">
-            <FeatureFlags />
-          </Route>
-        </Router>
+        <div className={classes.pageContainer}>
+          <Router>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/Items">
+              <ItemList />
+            </Route>
+            <Route exact path="/Feedback">
+              <FeedbackList />
+            </Route>
+            <Route exact path="/Metrics">
+              <Metrics />
+            </Route>
+            <Route exact path="/FeatureFlags">
+              <FeatureFlags />
+            </Route>
+          </Router>
+        </div>
       </ThemeProvider>
     </>
   );
