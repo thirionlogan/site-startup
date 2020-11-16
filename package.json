@@ -13,6 +13,9 @@
     "killNodeWin": "taskkill -F -IM node.exe",
     "killNodeLinux": "killall .node.bin"
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "author": {
     "name": "Logan Thirion",
     "email": "thirionlogan@gmail.com"
